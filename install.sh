@@ -20,5 +20,7 @@ fi
 python2.7 setup.py build
 if ! [ -d ./bin/ ]; then mkdir ./bin/; fi
 cp -a ./build/lib.linux-x86_64-2.7/backports ./bin/
+cp -a ./build/lib.linux-x86_64-2.7/backports ./test/
 rm -rf ./build
+python ./test/test_lzma.py
 echo "Module is available at ./bin"
