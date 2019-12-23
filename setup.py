@@ -64,7 +64,6 @@ prefix = sys.prefix
 home = os.path.expanduser("~")
 extens = [Extension('backports.lzma._lzma',
                     ['backports/lzma/_lzmamodule.c'],
-                    libraries = [lzmalib],
                     include_dirs = [
                         os.path.join(prefix, 'include'),
                         os.path.join(home, 'include'),
@@ -76,7 +75,8 @@ extens = [Extension('backports.lzma._lzma',
                         os.path.join(home, 'lib'),
                         '/opt/local/lib',
                         '/usr/local/lib'
-                    ]
+                    ],
+                    extra_objects = [os.path.join(home, 'lib/liblzma.a')]
                     )]
 
 descr = "Backport of Python 3.3's 'lzma' module for XZ/LZMA compressed files."
